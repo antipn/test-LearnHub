@@ -1,102 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/form.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
-    <script src="js/signup.js" type="module"></script>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="styles/form.css"/>
+    <link rel="stylesheet" href="styles/styles.css"/>
+    <!--    <script src="js/signup.js" type="module"></script>-->
     <title>Регистрация</title>
-  </head>
-  <body>
-    <header class="header">
-      <img src="assets/logo.svg" alt="learnhub logo" class="logo" />
-      <div class="user-container">
-        <a href="html/login.html">
-          <img src="assets/login.svg" class="login-logo" />
+</head>
+<body>
+<header class="header">
+    <img src="assets/logo.svg" alt="learnhub logo" class="logo"/>
+    <div class="user-container">
+        <a href="http://localhost:8080/login.html">
+            <!--          <a href=" html/login.html">-->
+            <img src="assets/login.svg" class="login-logo"/>
         </a>
-      </div>
-    </header>
-    <main class="main">
-      <div class="form-container">
-        <form class="form signup-form">
-          <div class="input-container">
-            <label for="login">
-              <span class="label-text">Логин</span>
-            </label>
-            <input
-              type="text"
-              name="login"
-              id="login"
-              placeholder="введите логин"
-            />
-            <div class="error"></div>
-          </div>
+    </div>
+</header>
+<main class="main">
+    <div class="form-container">
+        <!--       <form class="form signup-form">   -->
+        <form class="form signup-form" method="post" action="http://localhost:8080/registration/save">
+            <div class="input-container">
+                <label for="login">
+                    <span class="label-text">Логин</span>
+                </label>
+                <input
+                        type="text"
+                        name="login"
+                        id="login"
+                        placeholder="введите логин"
+                />
+                <div class="error"></div>
+            </div>
 
-          <div class="input-container">
-            <label for="email">
-              <span class="label-text">E-mail</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="введите e-mail"
-            />
-            <div class="error"></div>
-          </div>
-          <div class="input-container">
-            <label for="phone">
-              <span class="label-text">Телефон</span>
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
-              placeholder="+7 (999) 999-99-99"
-            />
-            <div class="error"></div>
-          </div>
-          <div class="input-container">
-            <label for="password">
-              <span class="label-text">Пароль</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="введите пароль"
-            />
-            <div class="error"></div>
-          </div>
-          <div class="input-container">
-            <label for="password2">
-              <span class="label-text">Повторите пароль</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password2"
-              placeholder="введите пароль еще раз"
-            />
-            <div class="error"></div>
-          </div>
+            <div class="input-container">
+                <label for="email">
+                    <span class="label-text">E-mail</span>
+                </label>
+                <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="введите e-mail"
+                />
+                <div class="error"></div>
+            </div>
+            <div class="input-container">
+                <label for="phone">
+                    <span class="label-text">Телефон</span>
+                </label>
+                <input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        placeholder="+7 (999) 999-99-99"
+                />
+                <div class="error"></div>
+            </div>
+            <div class="input-container">
+                <label for="password">
+                    <span class="label-text">Пароль</span>
+                </label>
+                <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="введите пароль"
+                />
+                <div class="error"></div>
+            </div>
+            <div class="input-container">
+                <label for="password2">
+                    <span class="label-text">Повторите пароль</span>
+                </label>
+                <input
+                        type="password"
+                        name="password"
+                        id="password2"
+                        placeholder="введите пароль еще раз"
+                />
+                <div class="error"></div>
+            </div>
 
-          <button class="btn btn-submit" type="submit">
-            Зарегистрироваться
-          </button>
-          <div class="login">
-            <span>Уже зарегистрированы?</span>
-            <a href="/login.html" class="login-link">Войти</a>
-          </div>
+            <button class="btn btn-submit" type="submit">
+
+                Зарегистрироваться
+            </button>
+            <div class="login">
+                <span>Уже зарегистрированы?</span>
+                <a href="http://localhost:8080/login" class="login-link">Войти</a>
+            </div>
         </form>
-      </div>
-    </main>
-    <footer class="footer">
-      <a href="tel:+7 800 551 32 44">+7 800 551 32 44</a>
-      <span>LearnHub © 2022</span>
-      <a href="https://github.com/LHTHC/test-LearnHub">репозиторий</a>
-    </footer>
-  </body>
+    </div>
+</main>
+<footer class="footer">
+    <a href="tel:+7 800 551 32 44">+7 800 551 32 44</a>
+    <span>LearnHub © 2022</span>
+    <a href="https://github.com/LHTHC/test-LearnHub">репозиторий</a>
+</footer>
+</body>
 </html>
