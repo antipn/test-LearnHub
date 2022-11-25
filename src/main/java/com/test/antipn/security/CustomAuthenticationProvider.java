@@ -24,19 +24,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        System.out.println("Received credentials: " + authentication.getName() + " " + authentication.getCredentials().toString());
-
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
 
         final User targetUser = userService.searchByLogin(name);
 
         if (targetUser == null) {
-            System.out.println("Unknown user");
             throw new BadCredentialsException("Unknown user " + name);
         }
         if (!password.equals(targetUser.getPassword())) {
-            System.out.println("Bad password");
             throw new BadCredentialsException("Bad password");
         }
         return new UsernamePasswordAuthenticationToken(name, password, new ArrayList<>());
@@ -45,6 +41,5 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
-        //return true;
     }
 }
