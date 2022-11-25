@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthService {
+public class UserService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public AuthService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public User searchByLogin(String login) {
+        return userRepository.getUserByName(login);
     }
 
     public User searchByLoginAndPass(String login, String password) {
@@ -22,6 +26,8 @@ public class AuthService {
         } else {
             return null;
         }
+//        final User byLogin = userRepository.getUserByName(login);
+//        return (byLogin.getPassword().equals(password)) ? byLogin : null;
     }
 
     public User signUp(User user) {

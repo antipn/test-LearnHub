@@ -3,26 +3,21 @@ package com.test.antipn.web;
 
 import com.test.antipn.dto.UserDto;
 import com.test.antipn.model.User;
-import com.test.antipn.service.AuthService;
+import com.test.antipn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.naming.Binding;
-
 
 @Controller
 
 public class AuthController {
 
-    private final AuthService authService;
+    private final UserService userService;
 
     @Autowired
-    public AuthController(AuthService authService) {
-        this.authService = authService;
+    public AuthController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping("/registration")
@@ -35,7 +30,7 @@ public class AuthController {
     public String doRegistration(@ModelAttribute("userDto") UserDto userDto) {
         System.out.println("registration page post method");
         System.out.println("Controller - login =" + userDto.getLogin() + " phone =" + userDto.getPhone() + " email =" + userDto.getEmail() + " password =" + userDto.getPassword());
-        authService.signUp(new User(userDto.getLogin(), userDto.getEmail(), userDto.getPhone(), userDto.getPassword().substring(0, userDto.getPassword().indexOf(","))));
+        userService.signUp(new User(userDto.getLogin(), userDto.getEmail(), userDto.getPhone(), userDto.getPassword().substring(0, userDto.getPassword().indexOf(","))));
         return "redirect:/registration";
     }
 
@@ -45,16 +40,16 @@ public class AuthController {
         return "html/login.html";
     }
 
-    @PostMapping(value = "/login")
-    public String loginProcces(@RequestParam("login") String login, @RequestParam("password") String password) {
-        User user = authService.searchByLoginAndPass(login, password);
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginProcess(@RequestParam("login") String login, @RequestParam("password") String password) {
+        System.out.println("login page post method");
+        User user = userService.searchByLoginAndPass(login, password);
         if (user != null) {
             System.out.println("Successfully authorised user");
         } else {
             System.out.println("Authorization failed");
         }
-        return "redirect:/login";
+        return "redirect:/registration";
     }
-
 
 }
