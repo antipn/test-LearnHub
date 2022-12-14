@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 
@@ -26,12 +27,21 @@ public class AuthController {
         return "index.html";
     }
 
-    @RequestMapping("/welcome")
-    public String welcomePage(Model model) {
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    public ModelAndView welcomePage() {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
-        model.addAttribute("name", name); // doesnt work properly
-        return "html/welcome.html";
+        System.out.println(auth);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("html/welcome.html");
+        model.addObject("login", name);
+
+        System.out.println(name);
+
+        return model;
+        //return "html/welcome.html";
     }
 
     @RequestMapping(value = "/registration/save", method = RequestMethod.POST)

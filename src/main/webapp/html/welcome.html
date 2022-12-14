@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -22,7 +24,9 @@
 </header>
 <main class="main">
     <div><h2>Welcome to LearnHub:</h2></div>
-    <span th:text="${name}"></span>
+    <h1 th:text="${login}"></h1>
+    <h1>Who is logged in ? </h1>
+    <td th:text="${login}"></td>
 
 </main>
 <footer class="footer">
